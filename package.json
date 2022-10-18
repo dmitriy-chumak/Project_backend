@@ -1,0 +1,30 @@
+{
+  "name": "project_backend",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dmitriy-chumak/Project_backend.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "f75e636436158ccb5a313a8b149d77ef91d40155",
+  "bugs": {
+    "url": "https://github.com/dmitriy-chumak/Project_backend/issues"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^4.10.0",
+    "mongoose": "^6.6.5",
+    "node": "^18.11.0",
+    "nodemon": "^2.0.20"
+  }
+}
