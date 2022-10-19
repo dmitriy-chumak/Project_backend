@@ -12,13 +12,12 @@ const getAllCosts = (req, res) => {
 }
 
 const addCost = (req, res) => {
-  if (validationAdd(req.body)) {
+  if (!validationAdd(req.body)) {
     res.status(400).send({ message: 'Bad validation' });
   }
 
   try {
-    const { nameShop, spend } = req.body;
-    const cost = new Cost({ nameShop, spend });
+    const cost = new Cost(req.body);
     cost.save().then(result => {
       res.status(200).send(result);
     });
@@ -28,16 +27,15 @@ const addCost = (req, res) => {
 }
 
 const changeCost = (req, res) => {
-  if (validationChange(req.body)) {
+  if (!validationChange(req.body)) {
     res.status(400).send({ message: 'Bad validation' });
   };
 
   try {
     const { id } = req.params;
-    const { nameShop: name, date: day, spend: price } = req.body;
     Cost.findByIdAndUpdate(
       id,
-      { nameShop: name, spend: price, date: day },
+      req.body,
       { new: true }
     ).then(result => {
       res.status(200).send(result);

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const CostScheme = new Schema({
-  nameShop: String,  
+  name: String,  
   spend: Number,
   date: {
     type: Date,
