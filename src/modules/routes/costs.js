@@ -1,5 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const {
+  validationChange,
+  validationAdd,
+} = require('../../middleware/validation');
 
 const {
   getAllCosts,
@@ -9,8 +13,8 @@ const {
 } = require('../controllers/costs-controller');
 
 router.get('/costs/', getAllCosts);
-router.post('/costs/', addCost);
-router.patch('/costs/:id', changeCost);
+router.post('/costs/', validationAdd, addCost);
+router.patch('/costs/:id', validationChange, changeCost);
 router.delete('/costs/:id', deleteCost);
 
 module.exports = router;

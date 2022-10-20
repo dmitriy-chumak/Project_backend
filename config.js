@@ -1,9 +1,9 @@
 require('dotenv').config();
 
-const URL = process.env.URL;
+const URL_CONNECTION_DATABASE = process.env.URL_CONNECTION_DATABASE;
 const PORT = process.env.PORT;
 
 module.exports = {
-  URL,
+  URL_CONNECTION_DATABASE,
   PORT,
 }

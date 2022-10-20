@@ -1,9 +1,13 @@
-const Cost = require('../../models/cost-schema');
-const { validationAdd, validationChange } = require('../../helpers/validation');
+const {
+  getAllDb,
+  addCostInDb,
+  changeCostInDb,
+  deleteCostInDb,
+} = require('../services/cost-services');
 
 const getAllCosts = (req, res) => {
   try {
-    Cost.find().then(result => {
+    getAllDb().then(result => {
       res.status(200).send({ data: result });
     });
   } catch (error) {
@@ -12,13 +16,8 @@ const getAllCosts = (req, res) => {
 }
 
 const addCost = (req, res) => {
-  if (!validationAdd(req.body)) {
-    res.status(400).send({ message: 'Bad validation' });
-  }
-
   try {
-    const cost = new Cost(req.body);
-    cost.save().then(result => {
+    addCostInDb(req.body).then(result => {
       res.status(200).send(result);
     });
   } catch (error) {
@@ -27,17 +26,8 @@ const addCost = (req, res) => {
 }
 
 const changeCost = (req, res) => {
-  if (!validationChange(req.body)) {
-    res.status(400).send({ message: 'Bad validation' });
-  };
-
   try {
-    const { id } = req.params;
-    Cost.findByIdAndUpdate(
-      id,
-      req.body,
-      { new: true }
-    ).then(result => {
+    changeCostInDb(req.params.id, req.body).then(result => {
       res.status(200).send(result);
     });
   } catch (error) {
@@ -47,8 +37,7 @@ const changeCost = (req, res) => {
 
 const deleteCost = (req, res) => {
   try {
-    const { id } = req.params;
-    Cost.deleteOne({ id }).then(result => {
+    deleteCostInDb(req.params.id).then(result => {
       res.status(200).send(result);
     });
   } catch (error) {
