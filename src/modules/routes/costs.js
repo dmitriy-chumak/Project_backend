@@ -6,13 +6,13 @@ const {
 } = require('../../middleware/validation');
 
 const {
-  getAllCosts,
+  getAllCost,
   addCost,
   changeCost,
   deleteCost,
 } = require('../controllers/costs-controller');
 
-router.get('/costs/', getAllCosts);
+router.get('/costs/', getAllCost);
 router.post('/costs/', validationAdd, addCost);
 router.patch('/costs/:id', validationChange, changeCost);
 router.delete('/costs/:id', deleteCost);

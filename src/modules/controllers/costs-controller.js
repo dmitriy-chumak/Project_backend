@@ -1,13 +1,13 @@
 const {
-  getAllDb,
-  addCostInDb,
-  changeCostInDb,
-  deleteCostInDb,
+  getAll,
+  add,
+  change,
+  remove,
 } = require('../services/cost-services');
 
-const getAllCosts = (req, res) => {
+const getAllCost = (req, res) => {
   try {
-    getAllDb().then(result => {
+    getAll().then(result => {
       res.status(200).send({ data: result });
     });
   } catch (error) {
@@ -17,7 +17,7 @@ const getAllCosts = (req, res) => {
 
 const addCost = (req, res) => {
   try {
-    addCostInDb(req.body).then(result => {
+    add(req.body).then(result => {
       res.status(200).send(result);
     });
   } catch (error) {
@@ -27,17 +27,17 @@ const addCost = (req, res) => {
 
 const changeCost = (req, res) => {
   try {
-    changeCostInDb(req.params.id, req.body).then(result => {
+    change(req.params.id, req.body).then(result => {
       res.status(200).send(result);
     });
   } catch (error) {
-    res.status(200).send('Error change');
+    res.status(400).send({ message: 'Error change'});
   }
 }
 
 const deleteCost = (req, res) => {
   try {
-    deleteCostInDb(req.params.id).then(result => {
+    remove(req.params.id).then(result => {
       res.status(200).send(result);
     });
   } catch (error) {
@@ -46,7 +46,7 @@ const deleteCost = (req, res) => {
 }
 
 module.exports = {
-  getAllCosts,
+  getAllCost,
   addCost,
   changeCost,
   deleteCost,

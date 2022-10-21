@@ -20,7 +20,7 @@ const validationAdd = [
   check('name')
   .isString()
   .trim()
-  .notEmpty().withMessage('asdas'),
+  .notEmpty(),
   check('spend')
   .isNumeric()
   .notEmpty(),
