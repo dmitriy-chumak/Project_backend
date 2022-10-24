@@ -1,13 +1,13 @@
 const {
-  getAll,
-  add,
-  change,
-  remove,
+  getAllCostService,
+  addCostService,
+  changeCostService,
+  removeCostService,
 } = require('../services/cost-services');
 
 const getAllCost = (req, res) => {
   try {
-    getAll().then(result => {
+    getAllCostService().then(result => {
       res.status(200).send({ data: result });
     });
   } catch (error) {
@@ -17,7 +17,7 @@ const getAllCost = (req, res) => {
 
 const addCost = (req, res) => {
   try {
-    add(req.body).then(result => {
+    addCostService(req.body).then(result => {
       res.status(200).send(result);
     });
   } catch (error) {
@@ -27,7 +27,7 @@ const addCost = (req, res) => {
 
 const changeCost = (req, res) => {
   try {
-    change(req.params.id, req.body).then(result => {
+    changeCostService(req.params.id, req.body).then(result => {
       res.status(200).send(result);
     });
   } catch (error) {
@@ -37,7 +37,7 @@ const changeCost = (req, res) => {
 
 const deleteCost = (req, res) => {
   try {
-    remove(req.params.id).then(result => {
+    removeCostService(req.params.id).then(result => {
       res.status(200).send(result);
     });
   } catch (error) {

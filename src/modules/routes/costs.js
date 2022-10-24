@@ -1,20 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const {
-  validationChange,
-  validationAdd,
-} = require('../../middleware/validation');
+  validationChangeCost,
+  validationAddCost,
+} = require('../../middleware/validationCost');
 
 const {
   getAllCost,
   addCost,
   changeCost,
   deleteCost,
-} = require('../controllers/costs-controller');
+} = require('../controllers/costs-controllers');
 
-router.get('/costs/', getAllCost);
-router.post('/costs/', validationAdd, addCost);
-router.patch('/costs/:id', validationChange, changeCost);
+router.get('/costs', getAllCost);
+router.post('/costs', validationAddCost, addCost);
+router.patch('/costs/:id', validationChangeCost, changeCost);
 router.delete('/costs/:id', deleteCost);
 
 module.exports = router;

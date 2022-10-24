@@ -1,17 +1,17 @@
-const Cost = require('../../models/cost-schema');
+const Cost = require('../../models/cost');
 
-const getAll = async () => {
+const getAllCostService = async () => {
   const costList = await Cost.find();
   return costList;
 }
 
-const add = async (cost) => {
+const addCostService = async (cost) => {
   const newCost = new Cost(cost);
   const result = await newCost.save();
   return result;
 }
 
-const change = async (id, changedCost) => {
+const changeCostService = async (id, changedCost) => {
   const result = await Cost.findByIdAndUpdate(
     id,
     changedCost,
@@ -20,14 +20,14 @@ const change = async (id, changedCost) => {
   return result;
 }
 
-const remove = async (id) => {
+const removeCostService = async (id) => {
   const result = await Cost.deleteOne({ _id: id});
   return result;
 }
 
 module.exports = {
-  getAll,
-  add,
-  change,
-  remove,
+  getAllCostService,
+  addCostService,
+  changeCostService,
+  removeCostService,
 };
