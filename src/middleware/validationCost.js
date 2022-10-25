@@ -3,12 +3,12 @@ const validateResult = require('./validationCheck');
 
 const validationChangeCost = [
   check('name')
-    .isString()
     .trim()
-    .notEmpty(),
-  check('spend')
-    .isNumeric()
     .notEmpty()
+    .isString(),
+  check('spend')
+    .notEmpty()
+    .isNumeric()
     .custom(value => value > 0),
   check('date')
     .notEmpty()
@@ -18,12 +18,12 @@ const validationChangeCost = [
 
 const validationAddCost = [
   check('name')
-    .isString()
     .trim()
-    .notEmpty(),
-  check('spend')
-    .isNumeric()
     .notEmpty()
+    .isString(),
+  check('spend')
+    .notEmpty()
+    .isNumeric()
     .custom(value => value > 0),
   validateResult
 ]
