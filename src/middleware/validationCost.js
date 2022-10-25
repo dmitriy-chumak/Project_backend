@@ -8,7 +8,8 @@ const validationChangeCost = [
     .notEmpty(),
   check('spend')
     .isNumeric()
-    .notEmpty(),
+    .notEmpty()
+    .custom(value => value > 0),
   check('date')
     .notEmpty()
     .isDate(),
@@ -22,7 +23,8 @@ const validationAddCost = [
     .notEmpty(),
   check('spend')
     .isNumeric()
-    .notEmpty(),
+    .notEmpty()
+    .custom(value => value > 0),
   validateResult
 ]
 
