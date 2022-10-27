@@ -3,7 +3,7 @@ const router = express.Router();
 const {
   validationChangeCost,
   validationAddCost,
-} = require('../../middleware/validationCost');
+} = require('../../middlewares/validationCost');
 
 const {
   getAllCost,
