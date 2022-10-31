@@ -16,8 +16,9 @@ const getAllCost = (req, res) => {
 }
 
 const addCost = (req, res) => {
+  const { name, spend } = req.body;
   try {
-    addCostService(req.body).then(result => {
+    addCostService(name, spend).then(result => {
       res.status(200).send(result);
     });
   } catch (error) {
@@ -26,8 +27,9 @@ const addCost = (req, res) => {
 }
 
 const changeCost = (req, res) => {
+  const { name, spend, date } = req.body;
   try {
-    changeCostService(req.params.id, req.body).then(result => {
+    changeCostService(req.params.id, name, spend, date).then(result => {
       res.status(200).send(result);
     });
   } catch (error) {

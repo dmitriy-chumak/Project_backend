@@ -3,9 +3,9 @@ const validateResult = require('./validationCheck');
 
 const validationChangeCost = [
   check('name')
+    .isString()
     .trim()
-    .notEmpty()
-    .isString(),
+    .notEmpty(),
   check('spend')
     .notEmpty()
     .isNumeric()
@@ -18,9 +18,9 @@ const validationChangeCost = [
 
 const validationAddCost = [
   check('name')
+    .isString()
     .trim()
-    .notEmpty()
-    .isString(),
+    .notEmpty(),
   check('spend')
     .notEmpty()
     .isNumeric()

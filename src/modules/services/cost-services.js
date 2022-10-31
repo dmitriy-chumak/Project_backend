@@ -5,13 +5,15 @@ const getAllCostService = async () => {
   return costList;
 }
 
-const addCostService = async (cost) => {
+const addCostService = async (name, spend) => {
+  const cost = { name, spend };
   const newCost = new Cost(cost);
   const result = await newCost.save();
   return result;
 }
 
-const changeCostService = async (id, changedCost) => {
+const changeCostService = async (id, name, spend, date) => {
+  const changedCost = { name, spend, date };
   const result = await Cost.findByIdAndUpdate(
     id,
     changedCost,
